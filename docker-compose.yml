@@ -1,0 +1,25 @@
+﻿version: "3"
+
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=secure
+    volumes:
+      - mysqlData:/var/lib/mysql
+    ports:
+      - 3306:3306
+  app:
+    build: .
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=secure
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+      - ~/.aspnet/https:/https:ro
+volumes:
+  mysqlData:
