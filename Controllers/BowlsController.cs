@@ -54,7 +54,7 @@ namespace MistyHollowWoodsInventory.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Description,WoodSpecies,BowlType,Price,Sold")] Bowls bowls)
+        public async Task<IActionResult> Create([Bind("ID,Description,Location,WoodSpecies,BowlType,Price,Sold")] Bowls bowls)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace MistyHollowWoodsInventory.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,WoodSpecies,BowlType,Price,Sold")] Bowls bowls)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Location,WoodSpecies,BowlType,Price,Sold")] Bowls bowls)
         {
             if (id != bowls.ID)
             {
